@@ -20,15 +20,19 @@ bool test3()
 	return add(0,0)==0;
 }
 
+bool test4()
+{
+	return add(5,5) == 9;
+}
+
 int main()
 {
-	TEST_INIT()
+	TestSuite s(__FILE__);
 
-	TEST("Add zero",&test1)
-	TEST("Random",&test2)
-	TEST("Zeros",&test3)
-	
-	TEST_FINALIZE()
+	s.test("Add zero",&test1);
+	s.test("Random",&test2);
+	s.test("Zeros",&test3);
+	// s.test("Bogey test",&test4);
 
 	return 0;
 }

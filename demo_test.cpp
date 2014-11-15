@@ -32,7 +32,7 @@ int main()
 	s.test("Add zero",&test1);
 	s.test("Random",&test2);
 	s.test("Zeros",&test3);
-	// s.test("Bogey test",&test4);
+	s.test("Bogey test",&test4);
 
 	return 0;
 }

@@ -2,22 +2,20 @@
 #include <sstream>
 #include "demo.h"
 
+// Global variable used to toggle run-time debugging
 short unsigned int debug;
 
-void process_args(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
+	// Process command line arguments
 	if (argc>1){
 		std::istringstream(argv[1]) >> debug;
 	}
 	else{
 		debug = 0;
 	}
-}
-
-int main(int argc, char* argv[])
-{
-	process_args(argc, argv);
-
+	
+	// Your program:
 	int z = add(3,4);
 	std::cout << "Answer: " << z << std::endl;
 

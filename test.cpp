@@ -4,7 +4,6 @@
 TestSuite::TestSuite(const std::string &s)
 {
 	std::cout << "Testing Functions in " << s << " ..." << std::endl;
-	any_fail = false;
 	count = 0;
 	count_passed = 0;
 }

@@ -9,7 +9,6 @@ class TestSuite{
 		~TestSuite();
 		void test(const std::string&, bool (*f)(void));
 	private:
-		bool any_fail;
 		int count;
 		int count_passed;
 };

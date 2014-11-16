@@ -11,7 +11,7 @@ TestSuite::TestSuite(const std::string &s)
 
 TestSuite::~TestSuite()
 {
-	if (any_fail){
+	if (count_passed < count){
 		std::cout << count_passed << " out of " << count << " tests were successful." << std::endl;}
 	else{
 		std::cout << "All tests were successful." << std::endl;}
@@ -28,6 +28,4 @@ void TestSuite::test(const std::string &s, bool (*f)(void))
 	else{
 		std::cout << s << " failed." << std::endl;
 	}
-
-	any_fail = any_fail || !pass;
 }

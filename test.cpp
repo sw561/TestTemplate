@@ -1,5 +1,4 @@
 #include "test.h"
-#include <iostream>
 
 TestSuite::TestSuite(const std::string &s)
 {
@@ -17,14 +16,19 @@ TestSuite::~TestSuite()
 	std::cout << std::endl;
 }
 
-void TestSuite::test(const std::string &s, bool (*f)(void))
+void TestSuite::test(const std::string &s, const bool &pass)
 {
 	count++;
-	bool pass = f();
 	if (pass){
 		count_passed++;
 	}
 	else{
 		std::cout << s << " failed." << std::endl;
 	}
+}
+
+void TestSuite::test(const std::string &s, bool (*f)(void))
+{
+	bool pass = f();
+	test(s,pass);
 }

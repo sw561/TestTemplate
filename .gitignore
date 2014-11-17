@@ -1,1 +1,3 @@
-*.o main *_test
+*.o
+main
+*_test

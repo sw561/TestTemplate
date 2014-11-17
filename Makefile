@@ -2,7 +2,6 @@ CC=g++
 CFLAGS= -Wall -Wextra -pedantic -O3 -ansi
 SOURCES=main.cpp demo.cpp 
 OBJECTS=$(SOURCES:.cpp=.o)
-TEST=$(SOURCES:.cpp=_test)
 .PRECIOUS: test.o $(SOURCES:.cpp=_test.o)
 EXECUTABLE=main
 
@@ -21,4 +20,4 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o $(EXECUTABLE) $(TEST)
+	rm -f *.o $(EXECUTABLE) *_test

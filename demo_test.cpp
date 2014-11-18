@@ -21,12 +21,6 @@ int test3()
 	return add(5,100);
 }
 
-/* Returns the expected result. */
-double test4()
-{
-	return add(5,5);
-}
-
 int main()
 {
 	TestSuite s(__FILE__);
@@ -34,15 +28,16 @@ int main()
 	// The test function can be passed as a pointer
 	s.test("Add zero",&test1);
 
-	// The test function can also be called explicitly 
+	// The result of the test function can also be called explicitly 
 	s.test("Zeros",test2());
 
 	// If the test function returns a value
 	// pass the expected result as the third argument
 	s.test("Random",&test3,105);
 
-	// Again, the test function can be called explicitly.
-	s.test("Bogey test",test4(),10.); // Using doubles this time.
+	// Again, the result can be passed explicitly
+	int z = add(5,5);
+	s.test("Bogey test",z,10);
 
 	// The test function is templated so any types may be passed,
 	// providing the type of the 2nd and 3rd argument is the same

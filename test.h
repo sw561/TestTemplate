@@ -19,10 +19,6 @@ class TestSuite{
 		template<typename T>
 		void test(const std::string&, const T&, const T&);
 
-		// Printing values
-		template<typename T>
-		void print(const T&, const T&);
-		
 	private:
 		int count;
 		int count_passed;
@@ -39,14 +35,10 @@ void TestSuite::test(const std::string &s, const T &res, const T &ans)
 {
 	bool pass = ( res==ans );
 	test(s,pass);
-	if (!pass) {print(res,ans);}
-}
-
-template<typename T>
-void TestSuite::print(const T &res, const T &ans)
-{
-	std::cout << "Return value:   " << res << std::endl;
-	std::cout << "Expected value: " << ans << std::endl << std::endl;
+	if (!pass){
+		std::cout << "Return value:   " << res << std::endl;
+		std::cout << "Expected value: " << ans << std::endl << std::endl;
+	}
 }
 
 #endif

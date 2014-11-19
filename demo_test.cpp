@@ -28,7 +28,7 @@ int main()
 	// The test function can be passed as a pointer
 	s.test("Add zero",&test1);
 
-	// The result of the test function can also be called explicitly 
+	// The result of the test function can also be passed explicitly 
 	s.test("Zeros",test2());
 
 	// If the test function returns a value

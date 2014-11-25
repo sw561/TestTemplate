@@ -32,6 +32,6 @@ void TestSuite::test(const std::string &s, bool (*f)(void))
 	bool pass = f();
 	test(s,pass);
 	if (!pass){
-		rerun<bool>(f);
+		rerun(f);
 	}
 }

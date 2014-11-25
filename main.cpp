@@ -16,8 +16,17 @@ int main(int argc, char* argv[])
 	}
 	
 	// Your program:
-	int z = add(3,4);
-	std::cout << "Answer: " << z << std::endl;
+	int z = 0;
+	// Keep adding one until overflow error is thrown
+	// Find the maximum integer value
+	while (true)
+	{
+		try { z=add(z,1); }
+		catch (OverflowError& e){ 
+			std::cout << "Answer: " << z << std::endl;
+			break;
+		}
+	}
 
 	return 0;
 }

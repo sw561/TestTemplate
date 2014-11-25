@@ -9,14 +9,8 @@ bool test1()
 	return add(0,3) == 3;
 }
 
-// Returns true for pass, otherwise returns false
-bool test2()
-{
-	return add(0,0)==0;
-}
-
-/* Returns the expected result. */
-int test3()
+// Returns the expected result.
+int test2()
 {
 	return add(5,100);
 }
@@ -28,16 +22,15 @@ int main()
 	// The test function can be passed as a pointer
 	s.test("Add zero",&test1);
 
-	// The result of the test function can also be passed explicitly 
-	s.test("Zeros",test2());
+	// Can also pass a value which is expected to be true
+	s.test("Check truth",add(5,5)==10);
 
 	// If the test function returns a value
 	// pass the expected result as the third argument
-	s.test("Random",&test3,105);
+	s.test("Random",&test2,105);
 
-	// Again, the result can be passed explicitly
-	int z = add(5,5);
-	s.test("Bogey test",z,10);
+	// Again, the result of the test function can be passed explicitly
+	s.test("Bogey test",add(5,5),10);
 
 	// The test function is templated so any types may be passed,
 	// providing the type of the 2nd and 3rd argument is the same

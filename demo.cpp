@@ -7,8 +7,8 @@
 
 int add(const int a, const int b)
 {
-	static const Parameter * param = Parameter::inst();
-	int z = (a+b) * param->factor;
+	static const int factor = Parameter::inst()->factor;
+	int z = (a+b) * factor;
 	
 	DIAGNOSE_ADD(a,b,z);
 	if (z < std::min(a,b)){

@@ -23,7 +23,7 @@ Parameter::Parameter(const std::string &s)
 		std::istringstream line_stream(line);
 		line_stream >> name >> val;
 
-		printf("%10s: %.4g\n",name.c_str(),val);
+		printf("%10s: %7.4f\n",name.c_str(),val);
 		process_arg(name,val);
 	}
 	printf("\n");

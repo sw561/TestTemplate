@@ -14,7 +14,7 @@ class Parameter{
 		}
 		int a;
 		int b;
-		double factor;
+		int factor;
 	private:
 		Parameter(const std::string&);
 		void process_arg(const std::string&, const double);

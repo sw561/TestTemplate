@@ -23,20 +23,18 @@ Parameter::Parameter(const std::string &s)
 		std::istringstream line_stream(line);
 		line_stream >> name >> val;
 
-		process_arg(name,val);
 		printf("%10s: %.4g\n",name.c_str(),val);
+		process_arg(name,val);
 	}
 	printf("\n");
 }
 
 #define FIRST_PARAM(x) if (name == #x) x = val;
-#define PARAM(x) else if (name == #x) x = val;
+#define PARAM(x) else FIRST_PARAM(x)
 void Parameter::process_arg(const std::string &name,const double val)
 {
 	FIRST_PARAM(a)
 	PARAM(b)
 	PARAM(factor)
-	else{
-		throw ParameterNotFound();
-	}
+	else{ throw ParameterNotFound(); }
 }

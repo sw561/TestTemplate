@@ -1,5 +1,6 @@
 #include "demo.h"
 #include "test.h"
+#include "parameter.h"
 #include "cmath"
 
 short unsigned int debug=0;
@@ -30,6 +31,7 @@ bool test3()
 
 int main()
 {
+	Parameter::inst();
 	TestSuite s(__FILE__);
 
 	// Can pass a bool which is expected to be true

@@ -1,16 +1,16 @@
 CC=g++
 CFLAGS= -Wall -Wextra -pedantic -O3 -ansi
-SOURCES=main.cpp demo.cpp 
+SOURCES=main.cpp demo.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 .PRECIOUS: test.o $(SOURCES:.cpp=_test.o)
 EXECUTABLE=main
 
 all: $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
+$(EXECUTABLE): $(OBJECTS) parameter.o
 	$(CC) $(CFLAGS) $^ -o $@
 
-%_test: %_test.o %.o test.o
+%_test: %_test.o %.o test.o parameter.o
 	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.cpp

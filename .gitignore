@@ -1,4 +1,5 @@
 *.o
 main
 *_test
-.*
+*.swp
+input*.txt

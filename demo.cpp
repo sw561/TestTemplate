@@ -1,15 +1,17 @@
 #include <iostream>
 #include "demo.h"
 #include "debug.h"
+#include "parameter.h"
 
 #define DIAGNOSE_ADD(x,y,z) if (debug>0) diagnose_add(x,y,z);
 
-int add(int a, int b)
+int add(const int a, const int b)
 {
-	int z = a+b;
+	static const Parameter * param = Parameter::inst();
+	int z = (a+b) * param->factor;
 	
+	DIAGNOSE_ADD(a,b,z);
 	if (z < std::min(a,b)){
-		DIAGNOSE_ADD(a,b,z);
 		throw OverflowError();
 	}
 		

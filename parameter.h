@@ -10,8 +10,7 @@ class Parameter{
 			return p_ptr;
 		}
 		static const Parameter * inst(){
-			static const Parameter * p_ptr = inst("input.txt");
-			return p_ptr;
+			return inst("input.txt"); // default name for input file
 		}
 		int a;
 		int b;

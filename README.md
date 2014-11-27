@@ -1,7 +1,7 @@
 TestTemplate
 ============
 
-Template Files for writing code which includes tests and debug options.
+Template Files for writing code which includes tests, run-time parameters and run-time debug options.
 
 The files beginning with "demo" demonstrate how to structure the code which requires testing. Note that if your files do not begin with "demo" then you will need to update the sources variable in "Makefile" to reflect this.
 
@@ -11,8 +11,10 @@ main.cpp is for your actual program, it calls the functions in demo.cpp and defi
 
 debug.h test.h and test.cpp are generic and can be copied to your real project without editing.
 
+parameter.h and parameter.cpp define the parameters of your program. They need to be declared in parameter.h. In the constructor of the parameter class, you can store the default values for these parameters. The process_arg() function is written with the help of macros, and tells the program how to interpret an input file in order to update any of those parameters.
+
 There are two bash scripts for convenience that demonstrate how to compile and run the program and the tests respectively.
 
-./run.sh compiles and runs the program and takes an optional argument. If there is no argument or the argument is 0, then no diagnostics are run in the code. Otherwise the corresponging diagnostic function(s) will be run for every function call.
+./run.sh compiles and runs the program and takes three optional argument. The first argument specifies the debug variable. If it is greater than zero the run-time diagnostic function(s) will be run for every function call. The second variable specifies the input file which is used to update variables in the parameter class. The third variable is the name of an output file.
 
 ./test.sh compiles and runs the test script.

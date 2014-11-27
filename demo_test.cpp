@@ -14,19 +14,29 @@ bool test1()
 // Returns the expected result.
 int test2()
 {
-	return add(-5,100);
+	return add(-5,-100);
 }
 
 // Test the throwing/catching of an exception
-bool test3()
+bool overflows(int x)
 {
-	int a = pow(2,30);
-	int b = pow(2,30);
+	int a = x;
+	int b = a;
 	try{
 		add(a,b);}
 	catch (OverflowError& e){
 		return true;}
 	return false;
+}
+
+bool test3()
+{
+	bool pass = true;
+	if (!overflows(pow(2,30))) pass = false;
+	if (overflows(pow(2,30)-1)) pass = false;
+	if (overflows(-pow(2,30))) pass = false;
+	if (!overflows(-pow(2,30)-1)) pass = false;
+	return pass;
 }
 
 int main()
@@ -51,7 +61,7 @@ int main()
 
 	// Again, if the test function returns an object
 	// then give the expected output as a third function parameter
-	s.test("Add 100",&test2,95);
+	s.test("Add 100",&test2,-105);
 
 	// Can check that exceptions are thrown when expected
 	s.test("Overflow Test",&test3);

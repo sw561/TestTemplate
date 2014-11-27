@@ -11,8 +11,11 @@ int add(const int a, const int b)
 	int z = (a+b) * factor;
 	
 	DIAGNOSE_ADD(a,b,z);
-	if (z < std::min(a,b)){
-		throw OverflowError();
+	if (a>0 && b>0){
+		if (z < std::min(a,b)) throw OverflowError();
+	}
+	else if (a<0 && b<0){
+		if (z > std::max(a,b)) throw OverflowError();
 	}
 		
 	return z;

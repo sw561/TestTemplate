@@ -35,8 +35,13 @@ Parameter::Parameter(const std::string &s)
 #define PARAM(x) else FIRST_PARAM(x)
 void Parameter::process_arg(const std::string &name,const double val)
 {
+	// Instructions for processing lines in input file
+	// These can be written simply for each parameter with the macros
 	FIRST_PARAM(a)
 	PARAM(b)
 	PARAM(factor)
 	else{ throw ParameterNotFound(); }
+
+	// If a parameter is not processed using the above macros 
+	// then an exception will be thrown
 }

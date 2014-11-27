@@ -12,9 +12,12 @@ class Parameter{
 		static const Parameter * inst(){
 			return inst("_.txt"); // default name for input file
 		}
+
+		// Your parameters are declared here:
 		int a;
 		int b;
 		int factor;
+
 	private:
 		Parameter(const std::string&);
 		void process_arg(const std::string&, const double);

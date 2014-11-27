@@ -10,6 +10,8 @@ Parameter::Parameter(const std::string &s)
 	a = 3;
 	b = 4;
 
+	if (s=="_.txt"){return;}
+
 	std::ifstream input;
 	std::string line, name;
 	double val;

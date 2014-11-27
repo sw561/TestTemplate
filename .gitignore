@@ -3,3 +3,4 @@ main
 *_test
 *.swp
 input*.txt
+out*.txt

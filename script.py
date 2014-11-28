@@ -2,16 +2,18 @@
 
 from program import *
 
+# Folder in which to store input and output files
 folder = "Data"
 
+# Checks folder exists, and that the program has been compiled
 init(folder)
 
-for G in [0,10]:#range(0,100,10):
-	for factor in [2]:
+for a in [0,10]:
+	for factor in [1,2]:
 		d = dict()
-		d["a"]=G
+		d["a"]=a
 		d["factor"]=factor
 
-		data = Program(folder,d).data()
-		print data
+		p = Program(folder,d)
+		print p.data()
 		print ""

@@ -18,3 +18,7 @@ There are two bash scripts for convenience that demonstrate how to compile and r
 ./run.sh compiles and runs the program and takes up to three arguments. The first argument is compulsory and specifies the output file. The second argument is optional (defualt is 0) and specifies the debug variable. If it is greater than zero the run-time diagnostic function(s) will be run for every function call. The final argument is also optional and specifies the input file which is used to update variables in the parameter class. If no input file is given, then the default parameter values in parameter.cpp are used.
 
 ./test.sh compiles and runs the test script.
+
+Finally script.py allows the user to call the program with a range of parameters. The parameters which need to be modified from the default values and their names (which must match the names used in the c++ program) are stored in a dictionary. The Program class in program.py then creates an input file with the given parameters, and calls the program with the given input file. The data can then be retrieved for post-computation analysis using the data(self) method.
+
+Note that the Program class will also check if the particular set of parameters has been used before, and will retrieve the previously computed data if that is available.

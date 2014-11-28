@@ -20,4 +20,4 @@ $(EXECUTABLE): $(OBJECTS) parameter.o
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o $(EXECUTABLE) *_test
+	rm -f *.o $(EXECUTABLE) *_test *.pyc

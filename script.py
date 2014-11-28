@@ -1,7 +1,17 @@
-import numpy
+#!/usr/bin/env python
 
-# Would like a program to create input file, run program, open output file
-# and do post-computation analysis such as plotting
+from program import *
 
-# This should also check whether the program has already been run with that input file.
-# If it has, it should recover the previously produced data.
+folder = "Data"
+
+init(folder)
+
+for G in [0,10]:#range(0,100,10):
+	for factor in [2]:
+		d = dict()
+		d["a"]=G
+		d["factor"]=factor
+
+		data = Program(folder,d).data()
+		print data
+		print ""

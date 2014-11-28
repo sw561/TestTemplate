@@ -29,7 +29,7 @@ void TestSuite::test(const std::string &s, const bool &pass)
 
 void TestSuite::test(const std::string &s, bool (*f)(void))
 {
-	bool pass = f();
+	bool pass = safe(f);
 	test(s,pass);
 	if (!pass){
 		rerun(f);

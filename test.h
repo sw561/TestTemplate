@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include "debug.h"
+#include <stdexcept>
 
 class TestSuite{
 	public:
@@ -20,6 +21,10 @@ class TestSuite{
 		template<typename T>
 		void test(const std::string&, const T&, const T&);
 
+		// Run test functions with exception catcher
+		template<typename T>
+		T safe(T (*f)(void));
+
 		// Rerun with diagnostics
 		template<typename T>
 		void rerun(T (*f)(void));
@@ -32,7 +37,7 @@ class TestSuite{
 template<typename T>
 void TestSuite::test(const std::string &s, T (*f)(void), const T &ans)
 {
-	T res = f();
+	T res = safe(f);
 	bool pass = ( res==ans );
 	test(s,pass);
 	if (!pass){
@@ -54,11 +59,23 @@ void TestSuite::test(const std::string &s, const T &res, const T &ans)
 }
 
 template<typename T>
+T TestSuite::safe(T (*f)(void))
+{
+	T res = T();
+	try{
+		res = f();}
+	catch (std::exception &e){
+		std::cout << e.what() << std::endl;}
+	return res;
+}
+		
+
+template<typename T>
 void TestSuite::rerun(T (*f)(void))
 {
 	std::cout << "Rerunning function with diagnostics ..." << std::endl;
 	debug = 1;
-	f();
+	safe(f);
 	debug = 0;
 	std::cout << std::endl;
 }

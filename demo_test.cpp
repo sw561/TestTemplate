@@ -18,25 +18,18 @@ int test2()
 }
 
 // Test the throwing/catching of an exception
-bool overflows(int x)
+// m=1 we expect overflow,
+// m=0 expect it to not overflow.
+template<int N,int m>
+bool overflows()
 {
-	int a = x;
+	int a = N;
 	int b = a;
 	try{
 		add(a,b);}
 	catch (OverflowError& e){
-		return true;}
-	return false;
-}
-
-bool test3()
-{
-	bool pass = true;
-	if (!overflows(pow(2,30))) pass = false;
-	if (overflows(pow(2,30)-1)) pass = false;
-	if (overflows(-pow(2,30))) pass = false;
-	if (!overflows(-pow(2,30)-1)) pass = false;
-	return pass;
+		return m ? true : false;}
+	return m ? false : true;
 }
 
 int main()
@@ -64,7 +57,10 @@ int main()
 	s.test("Add 100",&test2,-105);
 
 	// Can check that exceptions are thrown when expected
-	s.test("Overflow Test",&test3);
+	s.test("Overflow Test 1",&overflows<(1 << 30),1>);
+	s.test("Overflow Test 2",&overflows<((1 << 30) - 1),0>);
+	s.test("Overflow Test 3",&overflows<-(1 << 30),0>);
+	s.test("Overflow Test 4",&overflows<-(1 << 30) - 1,1>);
 
 	return 0;
 }

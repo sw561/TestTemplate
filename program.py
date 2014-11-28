@@ -7,6 +7,8 @@ from os import system,path
 # This should also check whether the program has already been run with that input file.
 # If it has, it should recover the previously produced data.
 
+compiled = False
+
 class Program:
 	def __init__(self,folder,d):
 		self.folder = folder
@@ -28,9 +30,10 @@ class Program:
 			self.create_input()
 
 		if not self.exists_out():
-			if not self.compiled:
+			global compiled
+			if not compiled:
 				self.make()
-				self.compiled = True
+				compiled = True
 			self.run()
 	
 	def run(self):

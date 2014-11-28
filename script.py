@@ -9,5 +9,5 @@ for a in [0,10]:
 		d["factor"]=factor
 
 		p = Program("Data",d)
-		print p.data()
+		print p.name,p.data()
 		print ""

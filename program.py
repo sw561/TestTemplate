@@ -12,27 +12,24 @@ compiled = False
 class Program:
 	def __init__(self,folder,d):
 		self.folder = folder
+		self.d = d
+		global compiled
+
 		# Create folder if necessary
 		if not path.isdir(folder):
 			system("mkdir "+folder)
-
-		self.d = d
 
 		# Define file names
 		self.name = self.name()
 		self.input_name = self.folder+"/"+self.name+"input.txt"
 		self.out_name = self.folder+"/"+self.name+"out.txt"
-		self.compiled = False
-
-		print self.name
 		
-		if not self.exists_input():
+		if not path.exists(self.input_name):
 			self.create_input()
 
-		if not self.exists_out():
-			global compiled
+		if not path.exists(self.out_name):
 			if not compiled:
-				self.make()
+				system("make")
 				compiled = True
 			self.run()
 	
@@ -41,9 +38,6 @@ class Program:
 	
 	def data(self):
 		return loadtxt(self.out_name)
-	
-	def make(self):
-		system("make")
 			
 	def name(self):
 		s = ""
@@ -57,9 +51,3 @@ class Program:
 		for key in self.d:
 			f.write(key+" "+str(self.d[key])+"\n")
 		f.close()
-	
-	def exists_input(self):
-		return path.exists(self.input_name)
-	
-	def exists_out(self):
-		return path.exists(self.out_name)

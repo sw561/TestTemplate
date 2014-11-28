@@ -1,4 +1,4 @@
-from numpy import *
+from numpy import loadtxt
 from os import system,path
 
 # A class to create input files, call an external executable, open output file

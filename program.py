@@ -10,10 +10,17 @@ from os import system,path
 class Program:
 	def __init__(self,folder,d):
 		self.folder = folder
+		# Create folder if necessary
+		if not path.isdir(folder):
+			system("mkdir "+folder)
+
 		self.d = d
+
+		# Define file names
 		self.name = self.name()
 		self.input_name = self.folder+"/"+self.name+"input.txt"
 		self.out_name = self.folder+"/"+self.name+"out.txt"
+		self.compiled = False
 
 		print self.name
 		
@@ -21,14 +28,19 @@ class Program:
 			self.create_input()
 
 		if not self.exists_out():
+			if not self.compiled:
+				self.make()
+				self.compiled = True
 			self.run()
-
 	
 	def run(self):
 		system("./main "+self.out_name+" 0 "+self.input_name)
 	
 	def data(self):
 		return loadtxt(self.out_name)
+	
+	def make(self):
+		system("make")
 			
 	def name(self):
 		s = ""
@@ -48,8 +60,3 @@ class Program:
 	
 	def exists_out(self):
 		return path.exists(self.out_name)
-
-def init(folder):
-	system("make")
-	if not path.isdir(folder):
-		system("mkdir "+folder)

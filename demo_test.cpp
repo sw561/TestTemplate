@@ -1,6 +1,5 @@
 #include "demo.h"
 #include "test.h"
-#include "cmath"
 
 short unsigned int debug=0;
 
@@ -19,7 +18,7 @@ int test2()
 // Test the throwing/catching of an exception
 // m=1 we expect overflow,
 // m=0 expect it to not overflow.
-template<int N,int m>
+template<int N>
 bool overflows()
 {
 	int a = N;
@@ -27,8 +26,8 @@ bool overflows()
 	try{
 		add(a,b);}
 	catch (OverflowError& e){
-		return m ? true : false;}
-	return m ? false : true;
+		return true;}
+	return false;
 }
 
 int main()
@@ -55,10 +54,10 @@ int main()
 	s.test("Add 100",&test2,-105);
 
 	// Can check that exceptions are thrown when expected
-	s.test("Overflow Test 1",&overflows<(1 << 30),1>);
-	s.test("Overflow Test 2",&overflows<((1 << 30) - 1),0>);
-	s.test("Overflow Test 3",&overflows<-(1 << 30),0>);
-	s.test("Overflow Test 4",&overflows<-(1 << 30) - 1,1>);
+	s.test("Overflow Test 1",&overflows<(1 << 30)>,true);
+	s.test("Overflow Test 2",&overflows<((1 << 30) - 1)>,false);
+	s.test("Overflow Test 3",&overflows<-(1 << 30)>,false);
+	s.test("Overflow Test 4",&overflows<-(1 << 30) - 1>,true);
 
 	return 0;
 }

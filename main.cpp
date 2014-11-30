@@ -10,7 +10,6 @@ short unsigned int debug;
 
 int main(int argc, char* argv[])
 {
-	const Parameter * param;
 	FILE *outfile;
 
 	// Process command line arguments
@@ -23,11 +22,11 @@ int main(int argc, char* argv[])
 	else debug = 0;
 
 	// Parameter file
-	if (argc>=4) param = Parameter::inst(argv[3]);
-	else param = Parameter::inst();
+	if (argc>=4) Parameter::inst(argv[3]);
 //--------------------------------------------------//
 	
 	// Your program:
+	const Parameter * param = Parameter::inst();
 	int z = add(param->a,param->b);
 	fprintf(outfile,"%d\n",z);
 

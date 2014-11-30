@@ -25,5 +25,4 @@ class Parameter{
 
 struct ParameterNotFound {};
 
-
 #endif

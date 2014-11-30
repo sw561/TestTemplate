@@ -31,6 +31,6 @@ int main(int argc, char* argv[])
 	int z = add(param->a,param->b);
 	fprintf(outfile,"%d\n",z);
 
-	if (argc==4) fclose(outfile);
+	fclose(outfile);
 	return 0;
 }

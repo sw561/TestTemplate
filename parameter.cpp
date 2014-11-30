@@ -5,7 +5,7 @@
 
 Parameter::Parameter(const std::string &s)
 {
-	// Default Values can be placed here or in input.txt.
+	// Default Values can be placed here.
 	factor = 1;
 	a = 3;
 	b = 4;

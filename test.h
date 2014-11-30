@@ -68,7 +68,6 @@ T TestSuite::safe(T (*f)(void))
 		std::cout << e.what() << std::endl;}
 	return res;
 }
-		
 
 template<typename T>
 void TestSuite::rerun(T (*f)(void))

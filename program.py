@@ -10,9 +10,10 @@ from os import system,path
 class Program:
 	# compiled has one value for all class instances
 	compiled = False
-	def __init__(self,folder,d):
+	def __init__(self,folder,d,debug=0,overwrite=False):
 		self.folder = folder
 		self.d = d
+		self.debug = debug
 
 		# Create folder if necessary
 		if not path.isdir(folder):
@@ -20,20 +21,21 @@ class Program:
 
 		# Define file names
 		self.name = self.name()
-		self.input_name = self.folder+"/"+self.name+"input.txt"
+		if self.name=="": self.input_name = ""
+		else: self.input_name = self.folder+"/"+self.name+"input.txt"
 		self.out_name = self.folder+"/"+self.name+"out.txt"
 		
 		if not path.exists(self.input_name):
 			self.create_input()
 
-		if not path.exists(self.out_name):
+		if not path.exists(self.out_name) or overwrite:
 			if not Program.compiled:
 				system("make")
 				Program.compiled = True
 			self.run()
 	
 	def run(self):
-		system("./main "+self.out_name+" 0 "+self.input_name)
+		system("./main "+self.out_name+" "+str(self.debug)+" "+self.input_name)
 	
 	def data(self):
 		return loadtxt(self.out_name)

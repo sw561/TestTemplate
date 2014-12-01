@@ -5,7 +5,7 @@ OBJECTS=$(SOURCES:.cpp=.o)
 .PRECIOUS: test.o $(SOURCES:.cpp=_test.o)
 EXECUTABLE=main
 
-all: $(EXECUTABLE)
+all: param_defi.h.auto param_decl.h.auto param_proc.h.auto $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS) parameter.o
 	$(CC) $(CFLAGS) $^ -o $@
@@ -19,5 +19,11 @@ $(EXECUTABLE): $(OBJECTS) parameter.o
 %.o: %.cpp %.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+parameter.o: parameter.cpp parameter.h param_defi.h.auto param_decl.h.auto param_proc.h.auto
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%_defi.h.auto %_decl.h.auto %_proc.h.auto: %_list.txt
+	python generate.py
+
 clean:
-	rm -f *.o $(EXECUTABLE) *_test *.pyc
+	rm -f *.o $(EXECUTABLE) *_test *.pyc *.auto

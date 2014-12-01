@@ -14,9 +14,7 @@ class Parameter{
 		}
 
 		// Your parameters are declared here:
-		int a;
-		int b;
-		int factor;
+		#include "param_decl.h.auto"
 
 	private:
 		Parameter(const std::string&);

@@ -16,10 +16,10 @@ int add(const int a, const int b)
 	
 	DIAGNOSE_ADD(a,b,z);
 	if (a>0 && b>0){
-		if (z < std::min(a,b)) throw OverflowError();
+		if (z < 0) throw OverflowError();
 	}
 	else if (a<0 && b<0){
-		if (z > std::max(a,b)) throw OverflowError();
+		if (z > 0) throw OverflowError();
 	}
 		
 	return z;

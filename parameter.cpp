@@ -6,9 +6,7 @@
 Parameter::Parameter(const std::string &s)
 {
 	// Default Values can be placed here.
-	factor = 1;
-	a = 3;
-	b = 4;
+	#include "param_defi.h.auto"
 
 	if (s=="_.txt") return;
 
@@ -37,9 +35,8 @@ void Parameter::process_arg(const std::string &name,const double val)
 {
 	// Instructions for processing lines in input file
 	// These can be written simply for each parameter with the macros
-	FIRST_PARAM(a)
-	PARAM(b)
-	PARAM(factor)
+	#include "param_proc.h.auto"
+
 	else{ throw ParameterNotFound(); }
 
 	// If a parameter is not processed using the above macros 

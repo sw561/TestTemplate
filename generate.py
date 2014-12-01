@@ -1,4 +1,6 @@
-data = file("param_list.txt","r")
+import sys
+
+data = file(sys.argv[1],"r")
 
 dec = file("param_decl.h.auto","w")
 defi = file("param_defi.h.auto","w")

@@ -23,7 +23,7 @@ parameter.o: parameter.cpp parameter.h param_defi.h.auto param_decl.h.auto param
 	$(CC) $(CFLAGS) -c $< -o $@
 
 %_defi.h.auto %_decl.h.auto %_proc.h.auto: %_list.txt
-	python generate.py
+	python generate.py $<
 
 clean:
 	rm -f *.o $(EXECUTABLE) *_test *.pyc *.auto

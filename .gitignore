@@ -1,9 +1,10 @@
 *.o
 main
 *_test
-*.swp
 *.pyc
+*.auto
+*.d
 *input.txt
 *out.txt
 *.png
-*.auto
+*.swp

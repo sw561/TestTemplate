@@ -12,8 +12,8 @@ all: param_defi.h.auto param_decl.h.auto param_proc.h.auto $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-%_test: %_test.o %.o test.o parameter.o
-	$(CC) $(CFLAGS) $^ -o $@
+%_test: param_defi.h.auto param_decl.h.auto param_proc.h.auto %_test.o %.o test.o parameter.o
+	$(CC) $(CFLAGS) $*_test.o $*.o test.o parameter.o -o $@
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@

@@ -31,7 +31,7 @@ void TestSuite::test(const std::string &s, bool (*f)(void))
 {
 	bool pass = safe(f);
 	test(s,pass);
-	if (!pass){
-		rerun(f);
-	}
+	#ifdef DEBUG
+	if (!pass) rerun(f);
+	#endif
 }

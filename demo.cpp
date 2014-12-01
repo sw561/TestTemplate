@@ -3,7 +3,11 @@
 #include "debug.h"
 #include "parameter.h"
 
+#ifdef DEBUG
 #define DIAGNOSE_ADD(x,y,z) if (debug>0) diagnose_add(x,y,z);
+#else
+#define DIAGNOSE_ADD(x,y,z)
+#endif
 
 int add(const int a, const int b)
 {

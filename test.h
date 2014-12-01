@@ -43,7 +43,9 @@ void TestSuite::test(const std::string &s, T (*f)(void), const T &ans)
 	if (!pass){
 		std::cout << "Returned value: " << res << std::endl;
 		std::cout << "Expected value: " << ans << std::endl;
+		#ifdef DEBUG
 		rerun(f);
+		#endif
 	}
 }
 

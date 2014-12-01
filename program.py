@@ -10,10 +10,12 @@ from os import system,path
 class Program:
 	# compiled has one value for all class instances
 	compiled = False
+
 	def __init__(self,folder,d,debug=0,overwrite=False):
 		self.folder = folder
 		self.d = d
 		self.debug = debug
+		self.overwrite = overwrite
 
 		# Create folder if necessary
 		if not path.isdir(folder):
@@ -25,17 +27,17 @@ class Program:
 		else: self.input_name = self.folder+"/"+self.name+"input.txt"
 		self.out_name = self.folder+"/"+self.name+"out.txt"
 		
-		if not path.exists(self.input_name):
+		# Create input file if necessary
+		if self.name!="" and not path.exists(self.input_name):
 			self.create_input()
 
-		if not path.exists(self.out_name) or overwrite:
+		# Check whether it's been run before, then compile and run
+		if self.overwrite or not path.exists(self.out_name):
 			if not Program.compiled:
-				system("make")
+				fail=system("make")
+				if fail: exit()
 				Program.compiled = True
-			self.run()
-	
-	def run(self):
-		system("./main "+self.out_name+" "+str(self.debug)+" "+self.input_name)
+			system("./main "+self.out_name+" "+str(self.debug)+" "+self.input_name)
 	
 	def data(self):
 		return loadtxt(self.out_name)
@@ -48,7 +50,7 @@ class Program:
 		return s
 	
 	def create_input(self):
-		f=open("Data/"+self.name+"input.txt","w")
+		f=open(self.input_name,"w")
 		for key in self.d:
 			f.write(key+" "+str(self.d[key])+"\n")
 		f.close()

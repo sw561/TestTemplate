@@ -1,7 +1,7 @@
 TestTemplate
 ============
 
-Template Files for writing code which includes tests and run-time determined parameters which are accessible throughout the program. There are also run-time and compile-time options. In addition python scripts are provided for easy testing, running and parameter sampling.
+Template Files for writing code which includes tests and run-time determined parameters which are accessible throughout the program. There are also run-time and compile-time options. In addition python scripts are provided for easy testing, running and parameter sampling including checks for previously computed data and previously generated plots.
 
 demo.h and demo.cpp demonstrate how to write your code which requires testing. Exceptions should inherit from std::exception. Functions which you want to be called only when debugging should be called using a macro as shown. demo_test.cpp explains how to write and call the tests using the TestSuite class (in test.cpp). Note that if your file names do not begin with "demo" then you will need to update the sources variable in "Makefile" to reflect this. 
 
@@ -17,4 +17,4 @@ The python script test.py compiles and runs the tests. It will compile and run "
 
 Finally script.py allows the user to run the program with a range of parameters. The parameters which need to be modified from the default values and their names (which must match the names used in the c++ program) are stored in a dictionary. The Program class in program.py then creates an input file with the given parameters, and calls the program with the given input file. The data can then be retrieved for post-computation analysis using the data(self) method.
 
-Note that the Program class will also check if the particular set of parameters has been used before, and will retrieve the previously computed data if that is available. This feature can be deactivated by constructing the Program instance with overwrite set to true.
+Note that the python scripts will also check if the particular set of parameters has been used before, and will retrieve the previously computed data if that is available and overwrite is set to false (its default value). The wrapper function in analysis.py provides a similar functionality; it will not re-plot data if the plots already exist.

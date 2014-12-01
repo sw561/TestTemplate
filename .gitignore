@@ -5,3 +5,4 @@ main
 *.pyc
 *input.txt
 *out.txt
+*.png

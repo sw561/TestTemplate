@@ -13,7 +13,7 @@ class Program:
 
 	def __init__(self,folder,d,debug=0,overwrite=False):
 		self.folder = folder
-		self.d = d
+		self.d = d # Dictionary containing modified parameters
 		self.debug = debug
 		self.overwrite = overwrite
 

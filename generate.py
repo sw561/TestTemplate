@@ -13,6 +13,7 @@ for line in data:
 	defi.write(name+" = "+value+";\n")
 	proc.write("PARAM("+name+")\n")
 
+data.close()
 dec.close()
 defi.close()
 proc.close()

@@ -1,5 +1,6 @@
 from numpy import loadtxt
 from os import system,path
+import sys
 
 # A class to create input files, call an external executable, open output file
 # and do post-computation analysis such as plotting
@@ -54,3 +55,17 @@ class Program:
 		for key in self.d:
 			f.write(key+" "+str(self.d[key])+"\n")
 		f.close()
+
+# Functions for compiling / running of tests
+def test(name):
+	fail=system("make "+name+"_test")
+	if fail: return
+	print ""
+	system("./"+name+"_test")
+
+def alltest(names,argv):
+	for i in range(1,len(argv)):
+		test(argv[i])
+	
+	if len(argv) == 1:
+		for name in names: test(name)

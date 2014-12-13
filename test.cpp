@@ -1,4 +1,5 @@
 #include "test.h"
+#include "debug.h"
 
 TestSuite::TestSuite(const std::string &s)
 {
@@ -32,6 +33,9 @@ void TestSuite::test(const std::string &s, bool (*f)(void))
 	bool pass = safe(f);
 	test(s,pass);
 	#ifdef DEBUG
-	if (!pass) rerun(f);
+	if (!pass){
+		rerun(f);
+		std::cout << std::endl;
+	}
 	#endif
 }

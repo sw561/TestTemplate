@@ -46,6 +46,7 @@ void TestSuite::test(const std::string &s, T (*f)(void), const T &ans)
 		#ifdef DEBUG
 		rerun(f);
 		#endif
+		std::cout << std::endl;
 	}
 }
 
@@ -56,7 +57,8 @@ void TestSuite::test(const std::string &s, const T &res, const T &ans)
 	test(s,pass);
 	if (!pass){
 		std::cout << "Returned value: " << res << std::endl;
-		std::cout << "Expected value: " << ans << std::endl << std::endl;
+		std::cout << "Expected value: " << ans << std::endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -78,7 +80,6 @@ void TestSuite::rerun(T (*f)(void))
 	debug = 1;
 	safe(f);
 	debug = 0;
-	std::cout << std::endl;
 }
 
 #endif

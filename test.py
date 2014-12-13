@@ -3,4 +3,3 @@ from program import *
 
 names = ["demo"]
 alltest(names,sys.argv)
-

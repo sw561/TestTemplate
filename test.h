@@ -69,7 +69,7 @@ T TestSuite::safe(T (*f)(void))
 	try{
 		res = f();}
 	catch (std::exception &e){
-		std::cout << e.what() << std::endl;}
+		std::cout << "Exception caught: " << e.what() << std::endl;}
 	return res;
 }
 

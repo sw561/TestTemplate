@@ -12,3 +12,4 @@ cp ~/Documents/TestTemplate/script.py .
 cp ~/Documents/TestTemplate/test.py .
 cp ~/Documents/TestTemplate/param_list.txt .
 cp ~/Documents/TestTemplate/main.cpp .
+cp ~/Documents/TestTemplate/.gitignore .

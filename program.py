@@ -38,7 +38,7 @@ class Program:
 				fail=system("make")
 				if fail: exit()
 				Program.compiled = True
-			system("nohup ./main "+self.out_name+" "+str(self.debug)+" "+self.input_name)
+			system("./main "+self.out_name+" "+str(self.debug)+" "+self.input_name)
 	
 	def data(self):
 		return loadtxt(self.out_name)

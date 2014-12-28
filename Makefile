@@ -7,7 +7,7 @@ EXECUTABLE=main
 
 all: param_defi.h.auto param_decl.h.auto param_proc.h.auto $(EXECUTABLE)
 
--include $(SOURCES:.cpp=.d) test.d
+-include $(SOURCES:.cpp=.d) $(SOURCES:.cpp=_test.d) test.d
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $^ -o $@

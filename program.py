@@ -25,8 +25,8 @@ class Program:
 		# Define file names
 		self.name = self.name()
 		if self.name=="": self.input_name = ""
-		else: self.input_name = self.folder+"/"+self.name+"input.txt"
-		self.out_name = self.folder+"/"+self.name+"out.txt"
+		else: self.input_name = self.folder+"/"+self.name+"input"
+		self.out_name = self.folder+"/"+self.name+"out"
 		
 		# Create input file if necessary
 		if self.name!="" and not path.exists(self.input_name):

@@ -4,8 +4,12 @@ main
 *.pyc
 *.auto
 *.d
-*input.txt
-*out.txt
+*input
+*out*
 *.png
 *.swp
-nohup.out
+parameter.*
+program.py
+generate.py
+test.h
+test.cpp

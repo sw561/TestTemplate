@@ -38,7 +38,8 @@ class Program:
 				fail=system("make")
 				if fail: exit()
 				Program.compiled = True
-			system("./main "+self.out_name+" "+str(self.debug)+" "+self.input_name)
+			fail=system("./main "+self.out_name+" "+str(self.debug)+" "+self.input_name)
+			if fail: exit()
 	
 	def data(self):
 		return loadtxt(self.out_name)

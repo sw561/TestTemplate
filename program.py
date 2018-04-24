@@ -46,7 +46,7 @@ class Program:
 			
 	def name(self):
 		s = ""
-		for key in self.d:
+		for key in sorted(self.d.keys()):
 			if s!="": s+="_"
 			s+=key+str(self.d[key])
 		return s
